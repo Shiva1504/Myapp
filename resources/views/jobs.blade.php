@@ -4,13 +4,15 @@
         Job Listing
     </x-slot:heading>
 
-    <h2>Job Openings:</h2>
-    <br>
+
+    <div class="flex items-center justify-between mb-4">
+        <h2 class="text-lg font-semibold">Job Openings:</h2>
+        <span>{{ now()->format('F j, Y, g:i a') }}</span>
+    </div>
     <ul>
-        {{-- Loop through the jobs array and display each job --}}
         @foreach ($jobs as $job)
             <li class="mb-2">
-                <a href="jobs/{{ $job['id'] }}" class="text-blue-600 hover:underline">
+                <a href="/jobs/{{ $job['id'] }}" class="text-yellow-900 hover:underline">
                     <strong>{{ $job['title'] }}</strong> 
                 </a>
                     at {{ $job['company'] }} - {{ $job['salary'] }}
