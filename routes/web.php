@@ -9,9 +9,9 @@ Route::get('/', function () {
 });
 
 Route::get('/jobs', function ()  {
-    
-    // Fetch all job listings with their associated employers with one SQL query 
-    $jobs = JobListing::with('employer')->get(); 
+    // Fetch all job listings with their associated employers with one SQL query
+    $jobs = JobListing::with('employer')->simplePaginate(5);
+
     return view('jobs', [
         'jobs' => $jobs
     ]);
