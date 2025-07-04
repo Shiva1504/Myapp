@@ -1,5 +1,4 @@
 <x-layout>
-
     <x-slot:heading>
         Job Listing
     </x-slot:heading>
