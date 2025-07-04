@@ -2,14 +2,18 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\JobListing;
+use Illuminate\Contracts\Queue\Job;
 
 Route::get('/', function () {
     return view('home');
 });
 
 Route::get('/jobs', function ()  {
+    
+    // Fetch all job listings with their associated employers with one SQL query 
+    $jobs = JobListing::with('employer')->get(); 
     return view('jobs', [
-        'jobs' => JobListing::all()
+        'jobs' => $jobs
     ]);
 });
 

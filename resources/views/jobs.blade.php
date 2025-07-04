@@ -9,15 +9,19 @@
         <h2 class="text-lg font-semibold">Job Openings:</h2>
         <span>{{ now()->format('F j, Y, g:i a') }}</span>
     </div>
-    <ul>
+    <div class="space-y-4">
         @foreach ($jobs as $job)
-            <li class="mb-2">
-                <a href="/jobs/{{ $job['id'] }}" class="text-yellow-900 hover:underline">
+                <a href="/jobs/{{ $job['id'] }}" class="block px-4 py-6 border border-yellow-900 text-yellow-900 rounded-lg">
+                    <div class="text-sm text-stone-950">
+                        {{ $job->employer->name }}
+                    </div>
+
                     <strong>{{ $job['title'] }}</strong> 
+                    <span class="text-stone-950">
+                        at {{ $job['company'] }} - {{ $job['salary'] }}
+                    </span>
                 </a>
-                    at {{ $job['company'] }} - {{ $job['salary'] }}
-            </li>
         @endforeach
-    </ul>
+    </div>
 
 </x-layout>
