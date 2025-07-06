@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\JobListing;
+use App\Models\Job;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +14,6 @@ class JobSeeder extends Seeder
     public function run(): void
     {
         
-        JobListing::factory(100)->create();
+        Job::factory(100)->create();
     }
 }
