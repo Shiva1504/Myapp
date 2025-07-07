@@ -16,7 +16,9 @@
         <p class="mt-2">Salary: {{ $job->salary }}</p>
         <p class="mt-4">Company: {{ $job->company }}</p>
         <div class="mt-6 flex justify-end">
-            <x-button href="/jobs/{{ $job->id }}/edit">Edit</x-button>
+            @can('edit', $job)
+                <x-button href="/jobs/{{ $job->id }}/edit" class="bg-yellow-800 hover:bg-gray-700">Edit</x-button>
+            @endcan
         </div>
     </div>
 
