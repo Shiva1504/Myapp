@@ -7,6 +7,13 @@ use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\JobPosted;
+use App\Jobs\TranslateJob;
+
+
+Route::get('/test', function () {
+    TranslateJob::dispatch(Job::find(1));
+    return 'Job dispatched';
+});
 
 Route::view('/', 'home'); 
 Route::view('/contact', 'contact');
