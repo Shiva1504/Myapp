@@ -5,7 +5,8 @@ use App\Models\Job;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\JobPosted;
 
 Route::view('/', 'home'); 
 Route::view('/contact', 'contact');
