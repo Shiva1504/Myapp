@@ -41,16 +41,26 @@ class JobController extends Controller
             'title' => ['required', 'min:3', 'max:255'],
             'company' => ['required', 'min:3', 'max:255'],
             'salary' => ['required', 'numeric', 'min:0'],
+            // Add location validation if needed
         ]);
-
-        // Create a new job listing
+    
+        $user = Auth::user();
+    
+        if (!$user->employer) {
+            // Option 1: Redirect with error
+            return redirect()->back()->withErrors(['You must be registered as an employer to post a job.']);
+            // Option 2: Create an employer record for the user (if appropriate for your app)
+            // $employer = Employer::create(['user_id' => $user->id, ...]);
+        }
+    
         $job = Job::create([
             'title' => request('title'),
             'company' => request('company'),
             'salary' => request('salary') . ' LPA',
-            'employer_id' => '1', 
+            'employer_id' => $user->employer->id,
+            // 'location' => request('location'), // Add if needed
         ]);
-
+    
         Mail::to($job->employer->user)->queue(new JobPosted($job));
     
         return redirect('/jobs');
