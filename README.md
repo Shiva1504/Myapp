@@ -19,7 +19,7 @@ A simple job posting web application built with Laravel. Employers can post jobs
 
 ### 1. Clone the Repository
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Shiva1504/Myapp
 cd Myapp
 ```
 
